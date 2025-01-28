@@ -488,7 +488,7 @@ struct nk_rect {float x,y,w,h;};
 struct nk_recti {short x,y,w,h;};
 typedef char nk_glyph[NK_UTF_SIZE];
 typedef union {void *ptr; int id;} nk_handle;
-struct nk_image {nk_handle handle; nk_ushort w, h; nk_ushort region[4];};
+struct nk_image {nk_handle handle; nk_ushort w, h; nk_short region[4];};
 struct nk_nine_slice {struct nk_image img; nk_ushort l, t, r, b;};
 struct nk_cursor {struct nk_image img; struct nk_vec2 size, offset;};
 struct nk_scroll {nk_uint x, y;};
@@ -24106,10 +24106,10 @@ nk_subimage_ptr(void *ptr, nk_ushort w, nk_ushort h, struct nk_rect r)
     nk_zero(&s, sizeof(s));
     s.handle.ptr = ptr;
     s.w = w; s.h = h;
-    s.region[0] = (nk_ushort)r.x;
-    s.region[1] = (nk_ushort)r.y;
-    s.region[2] = (nk_ushort)r.w;
-    s.region[3] = (nk_ushort)r.h;
+    s.region[0] = (nk_short)r.x;
+    s.region[1] = (nk_short)r.y;
+    s.region[2] = (nk_short)r.w;
+    s.region[3] = (nk_short)r.h;
     return s;
 }
 NK_API struct nk_image
@@ -24119,10 +24119,10 @@ nk_subimage_id(int id, nk_ushort w, nk_ushort h, struct nk_rect r)
     nk_zero(&s, sizeof(s));
     s.handle.id = id;
     s.w = w; s.h = h;
-    s.region[0] = (nk_ushort)r.x;
-    s.region[1] = (nk_ushort)r.y;
-    s.region[2] = (nk_ushort)r.w;
-    s.region[3] = (nk_ushort)r.h;
+    s.region[0] = (nk_short)r.x;
+    s.region[1] = (nk_short)r.y;
+    s.region[2] = (nk_short)r.w;
+    s.region[3] = (nk_short)r.h;
     return s;
 }
 NK_API struct nk_image
@@ -24132,10 +24132,10 @@ nk_subimage_handle(nk_handle handle, nk_ushort w, nk_ushort h, struct nk_rect r)
     nk_zero(&s, sizeof(s));
     s.handle = handle;
     s.w = w; s.h = h;
-    s.region[0] = (nk_ushort)r.x;
-    s.region[1] = (nk_ushort)r.y;
-    s.region[2] = (nk_ushort)r.w;
-    s.region[3] = (nk_ushort)r.h;
+    s.region[0] = (nk_short)r.x;
+    s.region[1] = (nk_short)r.y;
+    s.region[2] = (nk_short)r.w;
+    s.region[3] = (nk_short)r.h;
     return s;
 }
 NK_API struct nk_image
